@@ -1,12 +1,23 @@
-.navbar-bg {
-  background: linear-gradient(rgba(0, 0, 0, 0.25), rgba(129, 86, 86, 0.25)),
+body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Montserrat", sans-serif;
+}
+
+a {
+  text-decoration: none;
+}
+
+.main-bg {
+  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(129, 86, 86, 0.5)),
     url("../assets/images/hero-bg.png") no-repeat center top;
   object-fit: "cover";
   background-size: "100% auto";
 }
 
 @media only screen and (min-width: 768px) {
-  .navbar-bg {
+  .main-bg {
     background-size: 1488px 547px;
   }
 }
