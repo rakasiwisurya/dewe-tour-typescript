@@ -1,6 +1,6 @@
 import { Box, Grid, Typography } from "@mui/material";
+import { CardTour, NoData } from "../../components";
 import { useAppSelector } from "../../hooks";
-import CardTour from "../CardTour";
 
 const GroupTour = () => {
   const { groupTours, isGroupToursLoading } = useAppSelector((state) => state.groupTour);
@@ -21,7 +21,8 @@ const GroupTour = () => {
             </Grid>
           ))}
 
-        {groupTours.length > 0 &&
+        {!isGroupToursLoading &&
+          groupTours.length > 0 &&
           groupTours.map((groupTour) => (
             <Grid key={groupTour.trip_id} item sm={6} md={4}>
               <CardTour
@@ -34,6 +35,12 @@ const GroupTour = () => {
               />
             </Grid>
           ))}
+
+        {!isGroupToursLoading && groupTours.length === 0 && (
+          <Grid item xs={12}>
+            <NoData />
+          </Grid>
+        )}
       </Grid>
     </Box>
   );

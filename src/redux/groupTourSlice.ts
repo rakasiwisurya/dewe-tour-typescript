@@ -1,15 +1,23 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
+import { isAxiosError } from "axios";
 import { IGroupTour } from "../interfaces";
-import { api } from "../utils";
+import { api, requestQuery } from "../utils";
 
-export const getGroupTours = createAsyncThunk("groupTours", async () => {
-  try {
-    const response = await api.get("/trips");
-    return response.data;
-  } catch (error: unknown) {
-    return error;
+export const getGroupTours = createAsyncThunk(
+  "groupTours",
+  async (payload: object | undefined, thunkAPI) => {
+    try {
+      const response = await api.get(`/trips${requestQuery(payload)}`);
+      return response.data;
+    } catch (error: unknown) {
+      if (isAxiosError(error)) {
+        return thunkAPI.rejectWithValue(error?.response?.data?.message);
+      }
+
+      return thunkAPI.rejectWithValue(error);
+    }
   }
-});
+);
 
 const initialState: IGroupTour = {
   groupTours: [],
@@ -22,9 +30,7 @@ const groupTourSlice = createSlice({
   initialState,
   reducers: {
     resetGroupTours: (state) => {
-      state.isGroupToursLoading = true;
       state.groupToursErrors = null;
-      state.groupTours = [];
     },
   },
   extraReducers(builder) {

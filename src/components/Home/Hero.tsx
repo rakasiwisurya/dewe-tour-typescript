@@ -1,6 +1,22 @@
-import { Box, Button, Container, TextField, Stack, Typography } from "@mui/material";
+import { Box, Button, Container, Stack, TextField, Typography } from "@mui/material";
+import { ChangeEvent, FormEvent, useState } from "react";
+import { useAppDispatch, useAppSelector } from "../../hooks";
+import { getGroupTours, resetGroupTours } from "../../redux";
+import Notification from "../Notification";
 
 const Hero = () => {
+  const [keyword, setKeyword] = useState("");
+
+  const dispatch = useAppDispatch();
+  const { groupToursErrors } = useAppSelector((state) => state.groupTour);
+
+  const handleChange = (e: ChangeEvent<HTMLInputElement>) => setKeyword(e.target.value);
+
+  const handleSearch = (e: FormEvent<HTMLDivElement>) => {
+    e.preventDefault();
+    dispatch(getGroupTours({ keyword }));
+  };
+
   return (
     <Box
       component="section"
@@ -34,7 +50,7 @@ const Hero = () => {
             </Typography>
           </Stack>
 
-          <Box component="form">
+          <Box component="form" onSubmit={handleSearch}>
             <Box color="secondary.main" mb={1}>
               Find great places to holliday
             </Box>
@@ -45,11 +61,13 @@ const Hero = () => {
                   borderRadius: "5px 0 0 5px",
                 }}
                 fullWidth
+                onChange={handleChange}
               />
               <Button
                 variant="contained"
                 color="primary"
                 sx={{ fontWeight: 600, borderRadius: "0 5px 5px 0", px: 5, boxShadow: "none" }}
+                type="submit"
               >
                 Search
               </Button>
@@ -57,6 +75,13 @@ const Hero = () => {
           </Box>
         </Box>
       </Container>
+
+      <Notification
+        isOpen={!!groupToursErrors}
+        onClose={() => dispatch(resetGroupTours())}
+        message={groupToursErrors}
+        severity="error"
+      />
     </Box>
   );
 };

@@ -1,13 +1,12 @@
 import { useEffect } from "react";
 import { Footer, Header, Hero, MainContent } from "../components";
 import { useAppDispatch } from "../hooks";
-import { getGroupTours, resetGroupTours } from "../redux";
+import { getGroupTours } from "../redux";
 
 const Home = () => {
   const dispatch = useAppDispatch();
 
   useEffect(() => {
-    dispatch(resetGroupTours());
     dispatch(getGroupTours());
   }, [dispatch]);
 
