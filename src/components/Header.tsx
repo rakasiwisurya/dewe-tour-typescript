@@ -1,8 +1,24 @@
-import { DeweTourLogo } from "../assets";
 import { AppBar, Box, Button, Container, Stack, Toolbar } from "@mui/material";
+import { useState } from "react";
 import { Link } from "react-router-dom";
+import { DeweTourLogo } from "../assets";
+import { ModalLogin, ModalRegister } from "./Modals";
 
 const Header = () => {
+  const [isModalLoginAvailable, setIsModalLoginAvailable] = useState(false);
+  const [isModalRegisterAvailable, setIsModalRegisterAvailable] = useState(false);
+
+  const handleModalLoginOpen = () => setIsModalLoginAvailable(true);
+  const handleModalRegisterOpen = () => setIsModalRegisterAvailable(true);
+  const handleModalSwitch = () => {
+    setIsModalLoginAvailable((prevState) => !prevState);
+    setIsModalRegisterAvailable((prevState) => !prevState);
+  };
+  const handleModalClose = () => {
+    setIsModalLoginAvailable(false);
+    setIsModalRegisterAvailable(false);
+  };
+
   return (
     <Box component="header">
       <AppBar position="fixed" color="transparent" className="main-bg" sx={{ boxShadow: "none" }}>
@@ -26,6 +42,7 @@ const Header = () => {
                     variant="outlined"
                     color="secondary"
                     sx={{ fontWeight: 600, width: { xs: "100%", sm: 105 } }}
+                    onClick={handleModalLoginOpen}
                   >
                     Login
                   </Button>
@@ -35,6 +52,7 @@ const Header = () => {
                     variant="contained"
                     color="primary"
                     sx={{ fontWeight: 600, boxShadow: "none", width: { xs: "100%", sm: 105 } }}
+                    onClick={handleModalRegisterOpen}
                   >
                     Register
                   </Button>
@@ -44,6 +62,13 @@ const Header = () => {
           </Toolbar>
         </Container>
       </AppBar>
+
+      <ModalLogin
+        isOpen={isModalLoginAvailable}
+        onClose={handleModalClose}
+        onSwitch={handleModalSwitch}
+      />
+      <ModalRegister isOpen={isModalRegisterAvailable} onClose={handleModalClose} />
     </Box>
   );
 };
