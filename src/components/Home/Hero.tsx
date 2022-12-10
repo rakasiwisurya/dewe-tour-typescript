@@ -14,7 +14,11 @@ const Hero = () => {
 
   const handleSearch = (e: FormEvent<HTMLDivElement>) => {
     e.preventDefault();
-    dispatch(getGroupTours({ keyword }));
+
+    const payload: { keyword?: string } = {};
+    if (keyword) payload.keyword = keyword;
+
+    dispatch(getGroupTours(payload));
   };
 
   return (

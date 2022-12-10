@@ -1,4 +1,6 @@
 import { Box, Fade, Modal } from "@mui/material";
+import PerfectScrollbar from "react-perfect-scrollbar";
+import { theme } from "../data";
 import { ILightBox } from "../interfaces";
 
 const LightBox = ({ open, onClose, modalProps, boxProps, children }: ILightBox) => {
@@ -11,22 +13,23 @@ const LightBox = ({ open, onClose, modalProps, boxProps, children }: ILightBox) 
       closeAfterTransition
     >
       <Fade in={open}>
-        <Box
-          {...boxProps}
-          sx={{
-            position: "absolute" as "absolute",
-            top: "50%",
-            left: "50%",
-            transform: "translate(-50%, -50%)",
-            width: 300,
-            bgcolor: "background.paper",
-            p: 4,
-            borderRadius: 2,
-            maxHeight: "500px",
-            overflowY: "scroll",
-          }}
-        >
-          {children}
+        <Box {...boxProps}>
+          <PerfectScrollbar
+            style={{
+              position: "absolute",
+              top: "50%",
+              left: "50%",
+              transform: "translate(-50%, -50%)",
+              backgroundColor: theme.palette.background.paper,
+              padding: theme.spacing(4),
+              borderRadius: theme.spacing(2),
+              width: 300,
+              maxHeight: 500,
+              height: "auto",
+            }}
+          >
+            {children}
+          </PerfectScrollbar>
         </Box>
       </Fade>
     </Modal>

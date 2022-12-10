@@ -68,7 +68,11 @@ const Header = () => {
         onClose={handleModalClose}
         onSwitch={handleModalSwitch}
       />
-      <ModalRegister isOpen={isModalRegisterAvailable} onClose={handleModalClose} />
+      <ModalRegister
+        isOpen={isModalRegisterAvailable}
+        onClose={handleModalClose}
+        onSwitch={handleModalSwitch}
+      />
     </Box>
   );
 };

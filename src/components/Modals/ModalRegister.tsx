@@ -1,10 +1,10 @@
 import { IModalRegister } from "@/interfaces";
-import { Box, Button, Stack, TextField, Typography } from "@mui/material";
+import { Box, Button, colors, Stack, TextField, Typography } from "@mui/material";
 import { ChangeEvent, FormEvent, useState } from "react";
 import { HibiscusSmall, PalmSmall } from "../../assets";
 import LightBox from "../LightBox";
 
-const ModalRegister = ({ isOpen, onClose }: IModalRegister) => {
+const ModalRegister = ({ isOpen, onClose, onSwitch }: IModalRegister) => {
   const [form, setForm] = useState({
     fullname: "",
     email: "",
@@ -123,9 +123,17 @@ const ModalRegister = ({ isOpen, onClose }: IModalRegister) => {
           />
         </Box>
         <Box>
-          <Button variant="contained" fullWidth type="submit">
-            Register
-          </Button>
+          <Box>
+            <Button variant="contained" fullWidth sx={{ mb: 2 }} type="submit">
+              Register
+            </Button>
+          </Box>
+          <Typography fontSize={14} color={colors.grey["500"]}>
+            Already have an account?{" "}
+            <Box component="span" fontWeight={600} onClick={onSwitch} sx={{ cursor: "pointer" }}>
+              Klik Here
+            </Box>
+          </Typography>
         </Box>
       </Stack>
     </LightBox>

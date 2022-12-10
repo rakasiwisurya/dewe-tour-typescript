@@ -79,7 +79,7 @@ const ModalLogin = ({ isOpen, onClose, onSwitch }: IModalLogin) => {
             Login
           </Button>
           <Typography fontSize={14} color={colors.grey["500"]}>
-            Don't have an account? ?{" "}
+            Don't have an account?{" "}
             <Box component="span" fontWeight={600} onClick={onSwitch} sx={{ cursor: "pointer" }}>
               Klik Here
             </Box>
