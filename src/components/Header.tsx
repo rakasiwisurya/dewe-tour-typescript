@@ -6,12 +6,14 @@ import { useHeader } from "@/hooks";
 
 const Header = () => {
   const {
+    user,
     isModalLoginAvailable,
     isModalRegisterAvailable,
     handleModalLoginOpen,
     handleModalRegisterOpen,
     handleModalSwitch,
     handleModalClose,
+    handleLogout,
   } = useHeader();
 
   return (
@@ -32,26 +34,36 @@ const Header = () => {
                 direction={{ xs: "column", sm: "row" }}
                 alignItems="center"
               >
-                <Box width={{ xs: "100%", sm: 105 }} marginX={1} marginY={{ xs: 1, sm: 0 }}>
-                  <Button
-                    variant="outlined"
-                    color="secondary"
-                    sx={{ fontWeight: 600, width: { xs: "100%", sm: 105 } }}
-                    onClick={handleModalLoginOpen}
-                  >
-                    Login
-                  </Button>
-                </Box>
-                <Box width={{ xs: "100%", sm: 105 }} marginX={1} marginY={{ xs: 1, sm: 0 }}>
-                  <Button
-                    variant="contained"
-                    color="primary"
-                    sx={{ fontWeight: 600, boxShadow: "none", width: { xs: "100%", sm: 105 } }}
-                    onClick={handleModalRegisterOpen}
-                  >
-                    Register
-                  </Button>
-                </Box>
+                {!!user ? (
+                  <Box display="flex" justifyContent="end" width="100%">
+                    <Button variant="contained" onClick={handleLogout}>
+                      Logout
+                    </Button>
+                  </Box>
+                ) : (
+                  <>
+                    <Box width={{ xs: "100%", sm: 105 }} marginX={1} marginY={{ xs: 1, sm: 0 }}>
+                      <Button
+                        variant="outlined"
+                        color="secondary"
+                        sx={{ fontWeight: 600, width: { xs: "100%", sm: 105 } }}
+                        onClick={handleModalLoginOpen}
+                      >
+                        Login
+                      </Button>
+                    </Box>
+                    <Box width={{ xs: "100%", sm: 105 }} marginX={1} marginY={{ xs: 1, sm: 0 }}>
+                      <Button
+                        variant="contained"
+                        color="primary"
+                        sx={{ fontWeight: 600, boxShadow: "none", width: { xs: "100%", sm: 105 } }}
+                        onClick={handleModalRegisterOpen}
+                      >
+                        Register
+                      </Button>
+                    </Box>
+                  </>
+                )}
               </Stack>
             </Stack>
           </Toolbar>

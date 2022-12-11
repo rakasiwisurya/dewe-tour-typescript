@@ -1,10 +1,12 @@
 import { configureStore } from "@reduxjs/toolkit";
+import authReducer from "./authSlice";
 import groupTourReducer from "./groupTourSlice";
 
 export const store = configureStore({
   devTools: process.env.NODE_ENV === "development",
   reducer: {
     groupTour: groupTourReducer,
+    auth: authReducer,
   },
 });
 

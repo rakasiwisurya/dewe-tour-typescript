@@ -1,17 +1,19 @@
-import { Box } from "@mui/material";
-import { Footer, Header, Hero, MainContent } from "@/components";
+import { Background, Footer, GroupTour, Header, Hero, Service } from "@/components";
 import { useHome } from "@/hooks";
 
 const Home = () => {
   const {} = useHome();
 
   return (
-    <Box component="main">
+    <>
       <Header />
-      <Hero />
-      <MainContent />
+      <Background showPlant sx={{ pb: 17 }}>
+        <Hero />
+        <Service />
+        <GroupTour />
+      </Background>
       <Footer />
-    </Box>
+    </>
   );
 };
 

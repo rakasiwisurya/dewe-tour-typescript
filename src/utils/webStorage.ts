@@ -3,4 +3,5 @@ export const webStorage = {
   set: (key: string, value: string) => {
     return localStorage.setItem(key, JSON.stringify(value));
   },
+  clear: () => localStorage.clear(),
 };

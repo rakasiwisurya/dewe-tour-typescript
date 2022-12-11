@@ -9,7 +9,7 @@ const Hero = () => {
     <Box
       component="section"
       className="main-bg"
-      sx={{ paddingTop: { xs: 22.125, sm: 9 }, height: { xs: 532, sm: 480 } }}
+      sx={{ position: "relative", paddingTop: { xs: 22.125, sm: 9 }, height: { xs: 532, sm: 480 } }}
     >
       <Container sx={{ height: "80%" }}>
         <Box

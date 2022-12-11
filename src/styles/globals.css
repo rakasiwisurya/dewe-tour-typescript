@@ -9,6 +9,18 @@ a {
   text-decoration: none;
 }
 
+textarea {
+  font: inherit;
+  padding: 8.5px 14px;
+  width: 100%;
+  box-sizing: border-box;
+  resize: none;
+}
+
+textarea:focus-visible {
+  outline-color: #ffaf00;
+}
+
 .main-bg {
   background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(129, 86, 86, 0.5)),
     url("../assets/images/hero-bg.png") no-repeat center top;

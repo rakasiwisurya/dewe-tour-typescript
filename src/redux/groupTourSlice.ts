@@ -7,7 +7,7 @@ export const getGroupTours = createAsyncThunk(
   "groupTours",
   async (payload: object | undefined, thunkAPI) => {
     try {
-      const response = await api.get(`/trips${requestQuery(payload)}`);
+      const response = await api.json.get(`/trips${requestQuery(payload)}`);
       return response.data;
     } catch (error: unknown) {
       if (isAxiosError(error)) {
@@ -23,7 +23,7 @@ export const getGroupTour = createAsyncThunk(
   "groupTour",
   async (payload: { id?: string }, thunkAPI) => {
     try {
-      const response = await api.get(`/trips/${payload.id}`);
+      const response = await api.json.get(`/trips/${payload.id}`);
       return response.data;
     } catch (error: unknown) {
       if (isAxiosError(error)) {
