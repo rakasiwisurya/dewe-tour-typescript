@@ -1,5 +1,5 @@
 import { Box, Card, CardContent, Grid, Stack, Typography } from "@mui/material";
-import { services } from "../../data";
+import { services } from "@/data";
 
 const Service = () => {
   return (

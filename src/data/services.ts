@@ -1,4 +1,4 @@
-import { Agent, Guarantee, Heart, Support } from "../assets";
+import { Agent, Guarantee, Heart, Support } from "@/assets";
 
 export const services = [
   {

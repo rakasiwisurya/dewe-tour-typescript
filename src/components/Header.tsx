@@ -1,23 +1,18 @@
 import { AppBar, Box, Button, Container, Stack, Toolbar } from "@mui/material";
-import { useState } from "react";
 import { Link } from "react-router-dom";
-import { DeweTourLogo } from "../assets";
-import { ModalLogin, ModalRegister } from "./Modals";
+import { DeweTourLogo } from "@/assets";
+import { ModalLogin, ModalRegister } from "@/components";
+import { useHeader } from "@/hooks";
 
 const Header = () => {
-  const [isModalLoginAvailable, setIsModalLoginAvailable] = useState(false);
-  const [isModalRegisterAvailable, setIsModalRegisterAvailable] = useState(false);
-
-  const handleModalLoginOpen = () => setIsModalLoginAvailable(true);
-  const handleModalRegisterOpen = () => setIsModalRegisterAvailable(true);
-  const handleModalSwitch = () => {
-    setIsModalLoginAvailable((prevState) => !prevState);
-    setIsModalRegisterAvailable((prevState) => !prevState);
-  };
-  const handleModalClose = () => {
-    setIsModalLoginAvailable(false);
-    setIsModalRegisterAvailable(false);
-  };
+  const {
+    isModalLoginAvailable,
+    isModalRegisterAvailable,
+    handleModalLoginOpen,
+    handleModalRegisterOpen,
+    handleModalSwitch,
+    handleModalClose,
+  } = useHeader();
 
   return (
     <Box component="header">

@@ -1,9 +1,9 @@
 import { Box, Grid, Typography } from "@mui/material";
-import { CardTour, NoData } from "../../components";
-import { useAppSelector } from "../../hooks";
+import { CardTour, NoData } from "@/components";
+import { useGroupTour } from "@/hooks";
 
 const GroupTour = () => {
-  const { groupTours, isGroupToursLoading } = useAppSelector((state) => state.groupTour);
+  const { isGroupToursLoading, groupTours } = useGroupTour();
 
   return (
     <Box>
@@ -26,6 +26,7 @@ const GroupTour = () => {
           groupTours.map((groupTour) => (
             <Grid key={groupTour.trip_id} item sm={6} md={4}>
               <CardTour
+                id={groupTour.trip_id}
                 image={groupTour.trip_images[0].trip_image_url}
                 quota={groupTour.quota}
                 maxQuota={groupTour.max_quota}

@@ -1,12 +1,11 @@
-import { createTheme } from "@mui/material";
-import { amber } from "@mui/material/colors";
+import { colors, createTheme } from "@mui/material";
 
 export const theme = createTheme({
   palette: {
     primary: {
-      light: amber[600],
+      light: colors.amber[600],
       main: "#ffaf00",
-      dark: amber[800],
+      dark: colors.amber[800],
       contrastText: "#fff",
     },
     secondary: {

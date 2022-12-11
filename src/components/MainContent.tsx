@@ -1,15 +1,14 @@
 import { Box, Container } from "@mui/material";
-import { Hibiscus, Palm } from "../assets";
-import { GroupTour, Service } from "./Home";
-import { theme } from "../data";
+import { Hibiscus, Palm } from "@/assets";
+import { GroupTour, Service } from "@/components";
+import { theme } from "@/data";
 
 const MainContent = () => {
-  const {
-    palette: { grey },
-  } = theme;
-
   return (
-    <Box component="section" sx={{ position: "relative", bgcolor: grey[300], pb: 17 }}>
+    <Box
+      component="section"
+      sx={{ position: "relative", bgcolor: theme.palette.grey[300], pb: 17 }}
+    >
       <Box
         component="img"
         src={Hibiscus}

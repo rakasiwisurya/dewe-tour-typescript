@@ -1,8 +1,8 @@
-import { Box, Button, colors, Fade, Modal, Stack, TextField, Typography } from "@mui/material";
+import { Box, Button, colors, Stack, TextField, Typography } from "@mui/material";
 import { ChangeEvent, FormEvent, useState } from "react";
-import { HibiscusSmall, PalmSmall } from "../../assets";
-import { IModalLogin } from "../../interfaces";
-import LightBox from "../LightBox";
+import { HibiscusSmall, PalmSmall } from "@/assets";
+import { LightBox } from "@/components";
+import { IModalLogin } from "@/interfaces";
 
 const ModalLogin = ({ isOpen, onClose, onSwitch }: IModalLogin) => {
   const [form, setForm] = useState({

@@ -1,7 +1,7 @@
 import { Box, Fade, Modal } from "@mui/material";
 import PerfectScrollbar from "react-perfect-scrollbar";
-import { theme } from "../data";
-import { ILightBox } from "../interfaces";
+import { theme } from "@/data";
+import { ILightBox } from "@/interfaces";
 
 const LightBox = ({ open, onClose, modalProps, boxProps, children }: ILightBox) => {
   return (
@@ -24,7 +24,7 @@ const LightBox = ({ open, onClose, modalProps, boxProps, children }: ILightBox) 
               padding: theme.spacing(4),
               borderRadius: theme.spacing(2),
               width: 300,
-              maxHeight: 500,
+              maxHeight: 400,
               height: "auto",
             }}
           >

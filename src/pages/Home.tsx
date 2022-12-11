@@ -1,22 +1,17 @@
-import { useEffect } from "react";
-import { Footer, Header, Hero, MainContent } from "../components";
-import { useAppDispatch } from "../hooks";
-import { getGroupTours } from "../redux";
+import { Box } from "@mui/material";
+import { Footer, Header, Hero, MainContent } from "@/components";
+import { useHome } from "@/hooks";
 
 const Home = () => {
-  const dispatch = useAppDispatch();
-
-  useEffect(() => {
-    dispatch(getGroupTours());
-  }, [dispatch]);
+  const {} = useHome();
 
   return (
-    <main>
+    <Box component="main">
       <Header />
       <Hero />
       <MainContent />
       <Footer />
-    </main>
+    </Box>
   );
 };
 

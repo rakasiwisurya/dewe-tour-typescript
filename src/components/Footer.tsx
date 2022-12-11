@@ -1,6 +1,6 @@
-import { Box, Typography } from "@mui/material";
-import { Leaf } from "../assets";
-import { theme } from "../data";
+import { Box, Container, Typography } from "@mui/material";
+import { Leaf } from "@/assets";
+import { theme } from "@/data";
 
 const Footer = () => {
   return (
@@ -14,14 +14,27 @@ const Footer = () => {
         position: "relative",
       }}
     >
-      <Typography>Copyright @ 2022 Dewe Tour - Rakasiwi Surya. All Rights reserved</Typography>
-      <Box
-        component="img"
-        src={Leaf}
-        alt="Leaf"
-        height={130}
-        sx={{ position: "absolute", bottom: 0, right: 0 }}
-      />
+      <Container>
+        <Box
+          sx={{
+            display: "flex",
+            flexDirection: { xs: "column", sm: "row" },
+            alignItems: "center",
+            justifyContent: "center",
+            gap: { xs: 0, sm: 1 },
+          }}
+        >
+          <Typography>Copyright @ 2022</Typography>
+          <Typography>Dewe Tour - Rakasiwi Surya.</Typography>
+          <Typography>All Rights reserved</Typography>
+        </Box>
+        <Box
+          component="img"
+          src={Leaf}
+          alt="Leaf"
+          sx={{ height: { xs: 50, sm: 110 }, position: "absolute", bottom: 0, right: 0 }}
+        />
+      </Container>
     </Box>
   );
 };

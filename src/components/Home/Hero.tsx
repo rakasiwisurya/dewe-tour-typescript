@@ -1,25 +1,9 @@
 import { Box, Button, Container, Stack, TextField, Typography } from "@mui/material";
-import { ChangeEvent, FormEvent, useState } from "react";
-import { useAppDispatch, useAppSelector } from "../../hooks";
-import { getGroupTours, resetGroupTours } from "../../redux";
-import Notification from "../Notification";
+import { Notification } from "@/components";
+import { useHero } from "@/hooks";
 
 const Hero = () => {
-  const [keyword, setKeyword] = useState("");
-
-  const dispatch = useAppDispatch();
-  const { groupToursErrors } = useAppSelector((state) => state.groupTour);
-
-  const handleChange = (e: ChangeEvent<HTMLInputElement>) => setKeyword(e.target.value);
-
-  const handleSearch = (e: FormEvent<HTMLDivElement>) => {
-    e.preventDefault();
-
-    const payload: { keyword?: string } = {};
-    if (keyword) payload.keyword = keyword;
-
-    dispatch(getGroupTours(payload));
-  };
+  const { groupToursErrors, handleChange, handleSearch, handleNotifClose } = useHero();
 
   return (
     <Box
@@ -82,7 +66,7 @@ const Hero = () => {
 
       <Notification
         isOpen={!!groupToursErrors}
-        onClose={() => dispatch(resetGroupTours())}
+        onClose={handleNotifClose}
         message={groupToursErrors}
         severity="error"
       />

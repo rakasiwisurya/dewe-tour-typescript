@@ -1,6 +1,6 @@
-import { capitalize } from "../utils";
 import { Alert, AlertTitle, Snackbar } from "@mui/material";
-import { INotification } from "../interfaces";
+import { INotification } from "@/interfaces";
+import { capitalize } from "@/utils";
 
 const Notification = ({ isOpen, onClose, severity, message }: INotification) => {
   return (

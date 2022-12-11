@@ -1,8 +1,8 @@
-import { IModalRegister } from "@/interfaces";
 import { Box, Button, colors, Stack, TextField, Typography } from "@mui/material";
 import { ChangeEvent, FormEvent, useState } from "react";
-import { HibiscusSmall, PalmSmall } from "../../assets";
-import LightBox from "../LightBox";
+import { HibiscusSmall, PalmSmall } from "@/assets";
+import { LightBox } from "@/components";
+import { IModalRegister } from "@/interfaces";
 
 const ModalRegister = ({ isOpen, onClose, onSwitch }: IModalRegister) => {
   const [form, setForm] = useState({
